@@ -16,7 +16,7 @@ public class UserInterface {
     public void runApplication() {
 
         while (true) {
-            System.out.println("What you need today:");         // Menu
+            System.out.println("What do you need today:");         // Menu
             System.out.println("1 My place ");
             System.out.println("2 Add location");
             System.out.println("3 The weather in my place ");

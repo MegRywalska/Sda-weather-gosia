@@ -1,6 +1,9 @@
 package com.sda.weather;
 
+
 import java.util.Scanner;
+
+import static com.sda.weather.LocationControl.*;
 
 public class UserInterface {
 
@@ -29,7 +32,7 @@ public class UserInterface {
                         myLocation();
                         break;
                     case "2":
-                        addLocation();
+                        addNewLocation();
                         break;
                     case "3":
                         weatherMyLocation();
@@ -43,8 +46,6 @@ public class UserInterface {
         }
     }
 
-    private void addLocation() {
-    }
 
     private void weatherMyLocation() {
     }

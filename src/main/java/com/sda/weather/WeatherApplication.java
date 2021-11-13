@@ -1,4 +1,7 @@
 package com.sda.weather;
 
-public @interface WeatherApplication {
+public class WeatherApplication {
+    public static void main(String[] args) {
+        System.out.println(1);
+    }
 }

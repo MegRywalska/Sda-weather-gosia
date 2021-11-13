@@ -1,5 +1,6 @@
 package com.sda.weather;
 
+import com.fasterxml.jackson.annotation.JsonTypeId;
 import lombok.*;
 
 @Getter
@@ -7,7 +8,9 @@ import lombok.*;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class LocationDTO {
+
+
+public class Location {
 
 
     private Long id;

@@ -1,5 +1,6 @@
 package com.sda.weather;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Scanner;
@@ -7,39 +8,30 @@ import java.util.Scanner;
 @RequiredArgsConstructor
 public class LocationController {
 
-    // private final ObjectMapper ;
+    private final ObjectMapper objectMapper;
+    private final LocationService locationService;
 
     Scanner scanner = new Scanner(System.in);
 
-    public String addNewLocation() { // todo get a JSON   -> String addNewLocation(String data)
+    public String addNewLocation(String data) {
+
+        LocationDTO locationDTO = objectMapper.readValue(data,LocationDTO.class);
+
+        String cityName = locationDTO.getCityName();
+        String region = locationDTO.getRegion();
+        String country = locationDTO.getCountry();
+        int longitude = locationDTO.getLongitude();
+        int latitude = locationDTO.getLatitude();
+
+        Location location = locationService.addNewLocation(cityName,region,country, longitude, latitude);
+        LocationDTO addNewLocation = new LocationDTO(location.getId(), location.getCityName(),location.getRegion(), location.getLongitude(),location.getLatitude())
+
+
+
+        // todo get a JSON   -> String addNewLocation(String data)
         // todo deserialize a JSON to eg. LocationDTO by using new ObjectMapper()
 
-        // todo move to the UserInterface
-//        System.out.println(" Your city : ");
-//        String cityName = scanner.nextLine();
-//
-//        System.out.println(" Which region is your city located ? : ");
-//        String region = scanner.nextLine();
-//
-//        System.out.println(" Which country is your city located ? : ");
-//        String country = scanner.nextLine();
-//
-//        System.out.println("Give me the coordinates :) Longitude :  ");
-//        String longitude = scanner.nextLine();
-//
-//        System.out.println(" Latitude :  ");
-//        String latitude  = scanner.nextLine();
-//
-//        LocationDTO location = obje;
-//
-//        return "LocationDTO{" +
-//                "cityName='" + cityName + '\'' +
-//                ", region='" + region + '\'' +
-//                ", country='" + country + '\'' +
-//                ", longitude=" + longitude +
-//                ", latitude=" + latitude +
-//                '}';
 
-        return null;
+        return objectMapper.writeValueAsString(addNewLocation);
     }
 }

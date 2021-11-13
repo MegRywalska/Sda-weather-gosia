@@ -35,10 +35,11 @@ public class UserInterface { // @RequiredArgsConstructor
                     myLocation();
                     break;
                 case "2":
+                    addNewLocation();
                     // todo get data from a user and pass them to the locationController.addNewLocation(json)
                     // todo create a JSON based on location data
                     // todo use an instance of LocationController
-                    locationController.addNewLocation();
+
                     break;
                 case "3":
                     weatherMyLocation();
@@ -52,6 +53,27 @@ public class UserInterface { // @RequiredArgsConstructor
         }
     }
 
+    public String addNewLocation() {
+        System.out.println(" Your city : ");
+        String cityName = scanner.nextLine();
+
+        System.out.println(" Which region is your city located ? : ");
+        String region = scanner.nextLine();
+
+        System.out.println(" Which country is your city located ? : ");
+        String country = scanner.nextLine();
+
+        System.out.println("Give me the coordinates :) Longitude :  ");
+        String longitude = scanner.nextLine();
+
+        System.out.println(" Latitude :  ");
+        String latitude = scanner.nextLine();
+
+
+        return String.format("{\"City Name\": \"%s\", \"Region\": \"%s\", " +
+                "\"Country\": \"%s\",\"Longitude\": " +
+                "\"%s\",\"Latitude\": \"%s\",}", cityName, region,country,longitude,latitude);
+    }
 
     private void weatherMyLocation() {
     }

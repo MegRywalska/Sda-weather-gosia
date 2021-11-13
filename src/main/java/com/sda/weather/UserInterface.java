@@ -35,7 +35,9 @@ public class UserInterface { // @RequiredArgsConstructor
                     myLocation();
                     break;
                 case "2":
-                    // use an instance of LocationController
+                    // todo get data from a user and pass them to the locationController.addNewLocation(json)
+                    // todo create a JSON based on location data
+                    // todo use an instance of LocationController
                     locationController.addNewLocation();
                     break;
                 case "3":

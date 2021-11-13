@@ -1,13 +1,14 @@
 package com.sda.weather;
 
+import lombok.RequiredArgsConstructor;
 
 import java.util.Scanner;
 
-import static com.sda.weather.LocationControl.addNewLocation;
 
+@RequiredArgsConstructor  // tworzy konstruktor do pól finalnych
 public class UserInterface { // @RequiredArgsConstructor
 
-    // todo private final -> LocationController and inject this value by a constructor
+    private final LocationController locationController; // todo private final -> LocationController and inject this value by a constructor
 
     Scanner scanner = new Scanner(System.in);
 
@@ -35,7 +36,7 @@ public class UserInterface { // @RequiredArgsConstructor
                     break;
                 case "2":
                     // use an instance of LocationController
-                    addNewLocation();
+                    locationController.addNewLocation();
                     break;
                 case "3":
                     weatherMyLocation();

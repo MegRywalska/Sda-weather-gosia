@@ -35,7 +35,8 @@ public class UserInterface { // @RequiredArgsConstructor
                     myLocation();
                     break;
                 case "2":
-                    addNewLocation();
+                    addNewLocation(); // todo store a JSON in a variable and pass it to the locationController.addNewLocation(json)
+
                     // todo get data from a user and pass them to the locationController.addNewLocation(json)
                     // todo create a JSON based on location data
                     // todo use an instance of LocationController
@@ -69,7 +70,7 @@ public class UserInterface { // @RequiredArgsConstructor
         System.out.println(" Latitude :  ");
         String latitude = scanner.nextLine();
 
-
+        // todo replace field names inside the JSON -> city, region, country, longitude, latitude
         return String.format("{\"City Name\": \"%s\", \"Region\": \"%s\", " +
                 "\"Country\": \"%s\",\"Longitude\": " +
                 "\"%s\",\"Latitude\": \"%s\",}", cityName, region,country,longitude,latitude);

@@ -3,9 +3,11 @@ package com.sda.weather;
 
 import java.util.Scanner;
 
-import static com.sda.weather.LocationControl.*;
+import static com.sda.weather.LocationControl.addNewLocation;
 
-public class UserInterface {
+public class UserInterface { // @RequiredArgsConstructor
+
+    // todo private final -> LocationController and inject this value by a constructor
 
     Scanner scanner = new Scanner(System.in);
 
@@ -25,24 +27,25 @@ public class UserInterface {
             System.out.println("3 The weather in my place ");
             System.out.println("4 Good bye");
 
-            String choice =scanner.nextLine();
+            String choice = scanner.nextLine();
 
-                switch (choice) {
-                    case "1" :
-                        myLocation();
-                        break;
-                    case "2":
-                        addNewLocation();
-                        break;
-                    case "3":
-                        weatherMyLocation();
-                        break;
-                    case "4" :
-                        return;
-                    default:
-                        System.out.println("Illegal choice. Select again");
-                        System.out.println();
-                }
+            switch (choice) {
+                case "1":
+                    myLocation();
+                    break;
+                case "2":
+                    // use an instance of LocationController
+                    addNewLocation();
+                    break;
+                case "3":
+                    weatherMyLocation();
+                    break;
+                case "4":
+                    return;
+                default:
+                    System.out.println("Illegal choice. Select again");
+                    System.out.println();
+            }
         }
     }
 

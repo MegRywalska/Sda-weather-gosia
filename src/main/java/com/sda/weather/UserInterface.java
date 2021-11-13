@@ -14,9 +14,6 @@ public class UserInterface {
     }
 
     public void runApplication() {
-
-        Integer choice;
-
         while (true) {
             System.out.println("What you need today:");
             System.out.println("1 My place ");
@@ -24,8 +21,7 @@ public class UserInterface {
             System.out.println("3 The weather in my place ");
             System.out.println("4 Good bye");
 
-            choice = Integer.parseInt(scanner.nextLine());
-
+            int choice = Integer.parseInt(scanner.nextLine()); // todo it may throw an exception
 
             switch (choice) {
                 case 1:
@@ -42,11 +38,8 @@ public class UserInterface {
                 default:
                     System.out.println("Select again");
                     System.out.println();
-
             }
         }
-
-
     }
 
     private void addLocation() {

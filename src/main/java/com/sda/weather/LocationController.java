@@ -12,7 +12,7 @@ public class LocationController {
     private final ObjectMapper objectMapper;
     private final LocationService locationService;
 
-    private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in); // todo remove it
 
     public String addNewLocation(String data) { // {"city": "London", "country": "UK" }
         try {
@@ -28,12 +28,11 @@ public class LocationController {
             LocationDTO addNewLocation = new LocationDTO(location.getCity(), location.getRegion(), location.getCountry(),
                     String.valueOf(location.getLongitude()), String.valueOf(location.getLatitude()));
             // z racji że w location są int to używamy String.valueOf
-
             return objectMapper.writeValueAsString(addNewLocation);
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
-            return addNewLocation("Nie mam pomysłu na wiadomość");
+            // e.printStackTrace(); // todo remove it
+            // return addNewLocation("Nie mam pomysłu na wiadomość"); // todo removie it
+            return "{}";   // todo message: e.getMessage()    {"message": "cos poszlo nie tak"}
         }
-
     }
 }

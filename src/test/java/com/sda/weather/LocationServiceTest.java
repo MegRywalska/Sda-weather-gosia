@@ -29,5 +29,7 @@ public class LocationServiceTest {
     // todo add test when city is empty -> it should throw an exception
     // todo add test when city is country -> it should throw an exception
     // todo add test when longitude is greater than a proper value -> it should throw an exception
+    // todo add test when longitude is lower than a proper value -> it should throw an exception
     // todo add test when latitude is greater than a proper value -> it should throw an exception
+    // todo add test when latitude is lower than a proper value -> it should throw an exception
 }

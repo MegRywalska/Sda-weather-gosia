@@ -23,8 +23,8 @@ public class LocationServiceTest {
         assertThat(location.getCity()).isEqualTo("London");
         assertThat(location.getRegion()).isEqualTo("Middle");
         assertThat(location.getCountry()).isEqualTo("UK");
-        assertThat(location.getLongitude()).isEqualTo("10");
-        assertThat(location.getLatitude()).isEqualTo("20");
+        assertThat(location.getLongitude()).isEqualTo(10);
+        assertThat(location.getLatitude()).isEqualTo(20);
     }
 
     // todo add test when region is empty -> it should return new location (OK)
@@ -51,14 +51,70 @@ public class LocationServiceTest {
         LocationService locationService = new LocationService(locationRepository, objectMapper);
 
         // when
-        Location location = locationService.addNewLocation("", "", "UK", "10", "20");
         Throwable throwable = catchThrowable(() -> locationService.addNewLocation("", "", "UK", "10", "20"));
         //then
         assertThat(throwable).isExactlyInstanceOf(IllegalArgumentException.class);
     }
     // todo add test when city is country -> it should throw an exception
+
     // todo add test when longitude is greater than a proper value -> it should throw an exception
+
+    @Test
+    void addNewLocation_whenLongitudeIsGreater_throwIllegalArgumentException(){
+        //give
+        ObjectMapper objectMapper = new ObjectMapper();
+        LocationRepository locationRepository = new LocationRepositoryMock();
+        LocationService locationService = new LocationService(locationRepository, objectMapper);
+
+        // when
+        Throwable throwable = catchThrowable(() -> locationService.addNewLocation("London", "", "UK", "190", "20"));
+
+        //then
+        assertThat(throwable).isExactlyInstanceOf(IllegalArgumentException.class);
+    }
+
     // todo add test when longitude is lower than a proper value -> it should throw an exception
+    @Test
+    void addNewLocation_whenLongitudeIsLower_throwIllegalArgumentException(){
+        //give
+        ObjectMapper objectMapper = new ObjectMapper();
+        LocationRepository locationRepository = new LocationRepositoryMock();
+        LocationService locationService = new LocationService(locationRepository, objectMapper);
+
+        // when
+        Throwable throwable = catchThrowable(() -> locationService.addNewLocation("London", "", "UK", "-190", "20"));
+
+        //then
+        assertThat(throwable).isExactlyInstanceOf(IllegalArgumentException.class);
+    }
+
     // todo add test when latitude is greater than a proper value -> it should throw an exception
+    @Test
+    void addNewLocation_whenLatitudeIsGreater_throwIllegalArgumentException(){
+        //give
+        ObjectMapper objectMapper = new ObjectMapper();
+        LocationRepository locationRepository = new LocationRepositoryMock();
+        LocationService locationService = new LocationService(locationRepository, objectMapper);
+
+        // when
+        Throwable throwable = catchThrowable(() -> locationService.addNewLocation("London", "", "UK", "20", "120"));
+
+        //then
+        assertThat(throwable).isExactlyInstanceOf(IllegalArgumentException.class);
+    }
+
     // todo add test when latitude is lower than a proper value -> it should throw an exception
+    @Test
+    void addNewLocation_whenLatirudeIsLower_throwIllegalArgumentException(){
+        //give
+        ObjectMapper objectMapper = new ObjectMapper();
+        LocationRepository locationRepository = new LocationRepositoryMock();
+        LocationService locationService = new LocationService(locationRepository, objectMapper);
+
+        // when
+        Throwable throwable = catchThrowable(() -> locationService.addNewLocation("London", "", "UK", "20", "-220"));
+
+        //then
+        assertThat(throwable).isExactlyInstanceOf(IllegalArgumentException.class);
+    }
 }

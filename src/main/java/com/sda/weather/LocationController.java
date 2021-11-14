@@ -29,7 +29,7 @@ public class LocationController {
                     String.valueOf(location.getLongitude()), String.valueOf(location.getLatitude()));
             // z racji że w location są int to używamy String.valueOf
             return objectMapper.writeValueAsString(addNewLocation);
-        } catch (JsonProcessingException e) { // todo catch IllegalArgumentException
+        } catch (JsonProcessingException e) { // todo catch IllegalArgumentException ->   | IllegalArgumentException
             return String.format("{\"massager\": \"%s\"}", e.getMessage());
         }
     }

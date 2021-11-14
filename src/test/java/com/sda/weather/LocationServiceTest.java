@@ -20,7 +20,6 @@ public class LocationServiceTest {
 
     @Test
     void addNewLocation_whenEverythingIsCorrect_returnsNewLocation() {
-        // given
         // when
         Location location = locationService.addNewLocation("London", "Middle", "UK", "10", "20");
 
@@ -35,7 +34,6 @@ public class LocationServiceTest {
     // add test when region is empty -> it should return new location (OK)
     @Test
     void addNewLocation_whenRegionIsEmpty_returnNewLocation(){
-        //given
         // when
         Location location = locationService.addNewLocation("London", "   ", "UK", "10", "20");
 
@@ -47,7 +45,6 @@ public class LocationServiceTest {
     // add test when city is empty -> it should throw an exception
     @Test
     void addNewLocation_whenCityIsEmpty_throwIllegalArgumentException() throws IllegalArgumentException {
-        //given
         // when
         Throwable throwable = catchThrowable(() -> locationService.addNewLocation("", "", "UK", "10", "20"));
         //then
@@ -57,7 +54,6 @@ public class LocationServiceTest {
     // add test when country is empty -> it should throw an exception
     @Test
     void addNewLocation_whenCountryIsEmpty_throwIllegalArgumentException() throws IllegalArgumentException {
-        //given
         // when
         Throwable throwable = catchThrowable(() -> locationService.addNewLocation("London", "", "", "10", "20"));
         //then
@@ -67,7 +63,6 @@ public class LocationServiceTest {
     // add test when longitude is greater than a proper value -> it should throw an exception
     @Test
     void addNewLocation_whenLongitudeIsGreater_throwIllegalArgumentException(){
-        //given
         // when
         Throwable throwable = catchThrowable(() -> locationService.addNewLocation("London", "", "UK", "181", "20"));
 
@@ -78,7 +73,6 @@ public class LocationServiceTest {
     // add test when longitude is lower than a proper value -> it should throw an exception
     @Test
     void addNewLocation_whenLongitudeIsLower_throwIllegalArgumentException(){
-        //given
         // when
         Throwable throwable = catchThrowable(() -> locationService.addNewLocation("London", "", "UK", "-181", "20"));
 
@@ -89,7 +83,6 @@ public class LocationServiceTest {
     // add test when latitude is greater than a proper value -> it should throw an exception
     @Test
     void addNewLocation_whenLatitudeIsGreater_throwIllegalArgumentException(){
-        //given
         // when
         Throwable throwable = catchThrowable(() -> locationService.addNewLocation("London", "", "UK", "20", "91"));
 
@@ -100,7 +93,6 @@ public class LocationServiceTest {
     // add test when latitude is lower than a proper value -> it should throw an exception
     @Test
     void addNewLocation_whenLatitudeIsLower_throwIllegalArgumentException(){
-        //given
         // when
         Throwable throwable = catchThrowable(() -> locationService.addNewLocation("London", "", "UK", "20", "-91"));
 
@@ -111,7 +103,6 @@ public class LocationServiceTest {
     // add test when longitude has wrong format eg. "asd"
     @Test
     void addNewLocation_whenLongitudeHasWrongFormat_throwIllegalArgumentException(){
-        //given
         // when
         Throwable throwable = catchThrowable(() -> locationService.addNewLocation("London", "", "UK", "abc", "20"));
 
@@ -122,7 +113,6 @@ public class LocationServiceTest {
     // add test when latitude has wrong format eg. "asd" -> throws new IllegalArgumentException
     @Test
     void addNewLocation_whenLatitudeHasWrongFormat_throwIllegalArgumentException(){
-        //given
         // when
         Throwable throwable = catchThrowable(() -> locationService.addNewLocation("London", "", "UK", "50", "abc"));
 

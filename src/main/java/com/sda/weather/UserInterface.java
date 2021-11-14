@@ -51,18 +51,23 @@ public class UserInterface {
     public String addNewLocation() {
         System.out.println(" Your city : ");
         String city = scanner.nextLine();
+        city.isBlank();
 
         System.out.println(" Which region is your city located ? : ");
         String region = scanner.nextLine();
+        region.isBlank();
 
         System.out.println(" Which country is your city located ? : ");
         String country = scanner.nextLine();
+        country.isBlank();
 
         System.out.println("Give me the coordinates :) Longitude :  ");
         String longitude = scanner.nextLine();
+        longitude.isBlank();
 
         System.out.println(" Latitude :  ");
         String latitude = scanner.nextLine();
+        latitude.isBlank();
 
         return String.format("{\"city\": \"%s\", \"region\": \"%s\", " +
                 "\"country\": \"%s\",\"longitude\": " +

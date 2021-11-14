@@ -30,9 +30,7 @@ public class LocationController {
             // z racji że w location są int to używamy String.valueOf
             return objectMapper.writeValueAsString(addNewLocation);
         } catch (JsonProcessingException e) {
-            // e.printStackTrace(); // todo remove it
-            // return addNewLocation("Nie mam pomysłu na wiadomość"); // todo removie it
-            return "{}";   // todo message: e.getMessage()    {"message": "cos poszlo nie tak"}
+            return String.format("{\"massager\": \"%s\"}", e.getMessage());
         }
     }
 }

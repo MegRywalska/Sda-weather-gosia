@@ -11,10 +11,9 @@ public class LocationController {
     private final ObjectMapper objectMapper;
     private final LocationService locationService;
 
-    Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in); // todo make it private
 
     public String addNewLocation(String data) { // {"city": "London", "country": "UK" }
-
         try {
             LocationDTO locationDTO = objectMapper.readValue(data, LocationDTO.class);
 
@@ -25,13 +24,14 @@ public class LocationController {
             String latitude = locationDTO.getLatitude();
 
             Location location = locationService.addNewLocation(cityName, region, country, longitude, latitude);
+            // todo use String.valueOf()
             LocationDTO addNewLocation = new LocationDTO(location.getCity(), location.getRegion(), location.getCountry(), location.getLongitude(), location.getLatitude());
 
             return objectMapper.writeValueAsString(addNewLocation);
-
         } catch (JsonProcessingException e) {
             e.printStackTrace();
+            // todo return a message with exception details as a JSON
         }
-        return null;
+        return null; // todo remove it
     }
 }

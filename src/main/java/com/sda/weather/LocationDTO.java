@@ -7,9 +7,7 @@ import lombok.*;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class LocationDTO {
-
     private String city;
     private String region;
     private String country;

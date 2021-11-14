@@ -1,14 +1,13 @@
 package com.sda.weather;
 
-import lombok.RequiredArgsConstructor;
-
+import lombok.*;
 import java.util.Scanner;
 
 
 @RequiredArgsConstructor  // tworzy konstruktor do pól finalnych
-public class UserInterface { // @RequiredArgsConstructor
+public class UserInterface {
 
-    private final LocationController locationController; // todo private final -> LocationController and inject this value by a constructor
+    private final LocationController locationController;
 
     Scanner scanner = new Scanner(System.in);
 
@@ -35,12 +34,7 @@ public class UserInterface { // @RequiredArgsConstructor
                     myLocation();
                     break;
                 case "2":
-                    addNewLocation(); // todo store a JSON in a variable and pass it to the locationController.addNewLocation(json)
-
-                    // todo get data from a user and pass them to the locationController.addNewLocation(json)
-                    // todo create a JSON based on location data
-                    // todo use an instance of LocationController
-
+                   locationController.addNewLocation(addNewLocation());
                     break;
                 case "3":
                     weatherMyLocation();
@@ -73,7 +67,7 @@ public class UserInterface { // @RequiredArgsConstructor
         // todo replace field names inside the JSON -> city, region, country, longitude, latitude
         return String.format("{\"City Name\": \"%s\", \"Region\": \"%s\", " +
                 "\"Country\": \"%s\",\"Longitude\": " +
-                "\"%s\",\"Latitude\": \"%s\",}", cityName, region,country,longitude,latitude);
+                "\"%s\",\"Latitude\": \"%s\",}", cityName, region, country, longitude, latitude);
     }
 
     private void weatherMyLocation() {

@@ -7,11 +7,13 @@ import lombok.*;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class Location {
-    private Long id;
-    private String cityName;
+
+
+    private String city;
     private String region;
     private String country;
-    private int longitude;  // dł geograficzna
-    private int latitude;  // szer. geograficzna
+    private String longitude;  // dł geograficzna
+    private String latitude;  // szer. geograficzna
 }

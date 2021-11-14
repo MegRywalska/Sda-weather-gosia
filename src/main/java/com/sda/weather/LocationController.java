@@ -1,8 +1,8 @@
 package com.sda.weather;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.RequiredArgsConstructor;
-
+import lombok.*;
 import java.util.Scanner;
 
 @RequiredArgsConstructor
@@ -14,23 +14,24 @@ public class LocationController {
     Scanner scanner = new Scanner(System.in);
 
     public String addNewLocation(String data) { // {"city": "London", "country": "UK" }
-        // todo use try-catch
-        LocationDTO locationDTO = objectMapper.readValue(data, LocationDTO.class);
-        String cityName = locationDTO.getCityName();
-        String region = locationDTO.getRegion();
-        String country = locationDTO.getCountry();
-        int longitude = locationDTO.getLongitude(); // todo String type
-        int latitude = locationDTO.getLatitude(); // todo String type
 
-        // todo create a addNewLocation method
-        Location location = locationService.addNewLocation(cityName, region, country, longitude, latitude);\
-        // todo Long, String, String, String, int, int (String, String, String, String, String)
-        LocationDTO addNewLocation = new LocationDTO(location.getId(), location.getCityName(), location.getRegion(), location.getLongitude(), location.getLatitude())
+        try {
+            LocationDTO locationDTO = objectMapper.readValue(data, LocationDTO.class);
 
-        // todo get a JSON   -> String addNewLocation(String data)
-        // todo deserialize a JSON to eg. LocationDTO by using new ObjectMapper()
+            String cityName = locationDTO.getCity();
+            String region = locationDTO.getRegion();
+            String country = locationDTO.getCountry();
+            String longitude = locationDTO.getLongitude();
+            String latitude = locationDTO.getLatitude();
 
-        // todo use try-catch
-        return objectMapper.writeValueAsString(addNewLocation);
+            Location location = locationService.addNewLocation(cityName, region, country, longitude, latitude);
+            LocationDTO addNewLocation = new LocationDTO(location.getCity(), location.getRegion(), location.getCountry(), location.getLongitude(), location.getLatitude());
+
+            return objectMapper.writeValueAsString(addNewLocation);
+
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

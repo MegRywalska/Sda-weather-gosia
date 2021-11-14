@@ -8,10 +8,11 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Location {
-    // todo Long id; when you use hibernate
+
+   // private Long id;
     private String city;
     private String region;
     private String country;
-    private String longitude;  // dł geograficzna // todo it should be int
-    private String latitude;  // szer. geograficzna // todo it should be int
+    private int longitude;  // dł geograficzna
+    private int latitude;  // szer. geograficzna
 }

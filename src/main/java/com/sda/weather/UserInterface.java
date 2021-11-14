@@ -50,7 +50,7 @@ public class UserInterface {
 
     public String addNewLocation() {
         System.out.println(" Your city : ");
-        String cityName = scanner.nextLine();
+        String city = scanner.nextLine();
 
         System.out.println(" Which region is your city located ? : ");
         String region = scanner.nextLine();
@@ -64,10 +64,9 @@ public class UserInterface {
         System.out.println(" Latitude :  ");
         String latitude = scanner.nextLine();
 
-        // todo replace field names inside the JSON -> city, region, country, longitude, latitude
-        return String.format("{\"City Name\": \"%s\", \"Region\": \"%s\", " +
-                "\"Country\": \"%s\",\"Longitude\": " +
-                "\"%s\",\"Latitude\": \"%s\",}", cityName, region, country, longitude, latitude);
+        return String.format("{\"city\": \"%s\", \"region\": \"%s\", " +
+                "\"country\": \"%s\",\"longitude\": " +
+                "\"%s\",\"latitude\": \"%s\",}", city, region, country, longitude, latitude);
     }
 
     private void weatherMyLocation() {

@@ -17,13 +17,13 @@ class LocationService {
         int latitudeInt = Integer.parseInt(latitude);
 
         if (city == null || city.isBlank() || country == null || country.isBlank()) {
-            throw new IllegalArgumentException("Your location and coutry can't be empty!! ");
-        } else if ( longitudeInt>= 180 || longitudeInt<= -180
-                || latitudeInt>= 90 || latitudeInt <= -90) {
+            throw new IllegalArgumentException("Your location and country can't be empty!!");
+        } else if (longitudeInt >= 180 || longitudeInt <= -180 || latitudeInt >= 90 || latitudeInt <= -90) {
             throw new IllegalArgumentException("You gave me the wrong coordinates :( ");
         }
 
-        // todo use LocationRepository
+        // todo use LocationRepository -> create new class eg. LocationRepositoryImpl
+        //  use locationRepository.save(...)
         return new Location(city, region, country, longitudeInt, latitudeInt);
     }
 }
